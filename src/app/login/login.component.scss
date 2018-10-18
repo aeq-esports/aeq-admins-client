@@ -4,8 +4,13 @@
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
 
+  .aeq-banner {
+    width: 200px;
+    height: 200px;
+  }
+
   .aeq-container {
-    width: 800px;
+    width: 60%;
   }
 
   .aeq-login-container, .aeq-register-container {
