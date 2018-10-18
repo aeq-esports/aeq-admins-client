@@ -1,3 +1,31 @@
-<div class="mat-elevation-z2">
-  <button mat-raised-button color="primary">Login</button>
+<div fxLayout="row" fxFill fxLayoutAlign="center center">
+  <div class="mat-elevation-z2" fxLayout="column" fxFlex="800px">
+    <div class="aeq-login-header">
+      <mat-toolbar color="primary">AeQ Community</mat-toolbar>
+    </div>
+    <div class="aeq-login-content" fxLayout="row">
+      <div class="aeq-login-container" fxFlex="60">
+        <h2>Login</h2>
+        <form id="login-form" [formGroup]="loginForm" fxLayout="column" fxLayoutGap="10px" (ngSubmit)="onSubmit()">
+
+          <mat-form-field fxFlex>
+            <input matInput formControlName="username" type="text" placeholder="Username">
+          </mat-form-field>
+
+          <mat-form-field fxFlex>
+            <input matInput formControlName="password" type="password" placeholder="Password">
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" fxFlex="basis">Login</button>
+        </form>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="aeq-register-container" fxFlex fxLayout="column">
+        <p>
+          Don´t have an account yet?
+        </p>
+        <a mat-stroked-button routerLink=".">Create Account</a>
+      </div>
+    </div>
+  </div>
 </div>

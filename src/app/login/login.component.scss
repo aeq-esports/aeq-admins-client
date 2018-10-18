@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+
+@mixin aeq-custom-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .aeq-container {
+    width: 800px;
+  }
+
+  .aeq-login-container, .aeq-register-container {
+    padding: 24px;
+  }
+
+  #login-form {
+    width: 80%;
+  }
+}
