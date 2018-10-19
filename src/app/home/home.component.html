@@ -1,18 +1,22 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="menu-button">
-    <mat-icon aria-label="Menu">menu</mat-icon>
-  </button>
-  <span>Admins</span>
-</mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav mode="side" position="start" opened>
+<td-layout>
+  <td-navigation-drawer flex sidenavTitle="Covalent" logo="assets:teradata" name="Firstname Lastname"
+                        email="firstname.lastname@company.com">
     <mat-nav-list>
-      <a mat-list-item routerLink=".">Test</a>
+      <a mat-list-item routerLink=".">
+        <mat-icon>home</mat-icon>
+        Home</a>
+      <a mat-list-item routerLink="members">
+        <mat-icon>people</mat-icon>
+        Members</a>
     </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <ng-content></ng-content>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
+    <div td-navigation-drawer-menu>
+      <mat-nav-list>
+        <a mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          Profile</a>
+      </mat-nav-list>
+    </div>
+  </td-navigation-drawer>
+  <router-outlet></router-outlet>
+</td-layout>
 
