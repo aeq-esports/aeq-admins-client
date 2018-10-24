@@ -27,3 +27,24 @@ $theme: mat-light-theme($primary, $accent, $warn);
   margin-right: 10px;
 }
 
+[td-toolbar-content] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+[td-toolbar-content] span {
+  vertical-align: middle;
+}
+
+[td-sidenav-toolbar-content] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+[td-sidenav-toolbar-content] span  {
+  vertical-align: middle;
+}
+
+
