@@ -2,17 +2,33 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MembersComponent} from './members.component';
 import {CovalentLayoutModule, CovalentMediaModule, CovalentStepsModule} from '@covalent/core';
-import {MatButtonModule, MatCardModule, MatIconModule, MatListModule} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatListModule,
+  MatRippleModule,
+  MatTableModule, MatToolbarModule
+} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
+import {MembersListComponent} from './members-list/members-list.component';
+import {CdkTableModule} from '@angular/cdk/table';
 
-
+const membersRoutes: Routes = [
+  {
+    path: 'members', component: MembersComponent,
+    children: [
+      {path: 'list', component: MembersListComponent}
+    ]
+  },
+];
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    RouterModule.forChild(membersRoutes),
     FlexLayoutModule,
     CovalentLayoutModule,
     CovalentStepsModule,
@@ -21,9 +37,14 @@ import {RouterModule} from '@angular/router';
     MatListModule,
     MatButtonModule,
     MatCardModule,
-    RouterModule
+    RouterModule,
+    MatTableModule,
+    CdkTableModule,
+    MatCheckboxModule,
+    MatRippleModule,
+    MatToolbarModule
   ],
-  declarations: [MembersComponent],
+  declarations: [MembersComponent, MembersListComponent],
   exports: [MembersComponent]
 })
 export class MembersModule {

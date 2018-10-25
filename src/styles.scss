@@ -2,22 +2,20 @@
 @import '~@covalent/core/theming/all-theme';
 
 $typography: mat-typography-config(
-  $font-family: 'Roboto, monospace'
-  // $headline: mat-typography-level(32px, 48px, 700)
+  $font-family: 'Roboto, monospace' // $headline: mat-typography-level(32px, 48px, 700)
 );
 
 @include mat-core($typography);
 
 $primary: mat-palette($mat-orange, 800, 100, 900);
-$accent:  mat-palette($mat-light-blue, 600, 100, 900);
+$accent: mat-palette($mat-light-blue, 600, 100, 900);
 
-$warn:    mat-palette($mat-red, 600, 100, 900);
+$warn: mat-palette($mat-red, 600, 100, 900);
 
 $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 @include covalent-theme($theme, $typography);
-
 
 .td-layout-nav-list-content .mat-icon {
   margin-right: 10px;
@@ -43,8 +41,15 @@ $theme: mat-light-theme($primary, $accent, $warn);
   align-items: center;
 }
 
-[td-sidenav-toolbar-content] span  {
+
+[td-sidenav-toolbar-content] span {
   vertical-align: middle;
 }
 
+.mat-table-xs th.mat-header-cell:first-of-type {
+  padding-left: 6px !important;
+}
 
+.mat-table-xs td.mat-cell:first-of-type {
+  padding-left: 6px !important;
+}

@@ -17,6 +17,10 @@
       </mat-nav-list>
     </div>
   </td-navigation-drawer>
-  <router-outlet></router-outlet>
+  <td-layout-nav logo="assets:teradata" toolbarTitle="Covalent" navigationRoute="/">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </td-layout-nav>
 </td-layout>
-
