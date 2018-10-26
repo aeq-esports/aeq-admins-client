@@ -1,0 +1,52 @@
+<td-layout>
+  <td-layout-nav color="secondary">
+    <div td-toolbar-content fxFlex>
+      <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span>Applications</span>
+      <span fxFlex="grow"></span>
+      <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+
+    </div>
+
+    <mat-card>
+      <mat-tab-group dynamicHeight="true">
+        <mat-tab label="New">
+          <mat-list [disableRipple]="false">
+            <mat-list-item mat-ripple>
+              <mat-icon matListIcon>folder</mat-icon>
+              <h4 matLine>AeQ Cypher</h4>
+              <p matLine class="demo-2">Lukas</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item mat-ripple>
+              <mat-icon matListIcon>folder</mat-icon>
+              <h4 matLine>AeQ Cypher</h4>
+              <p matLine class="demo-2">Lukas</p>
+            </mat-list-item>
+            <mat-list-item mat-ripple>
+              <mat-icon matListIcon>folder</mat-icon>
+              <h4 matLine>AeQ Cypher</h4>
+              <p matLine class="demo-2">Lukas</p>
+            </mat-list-item>
+            <mat-list-item mat-ripple>
+              <mat-icon matListIcon>folder</mat-icon>
+              <h4 matLine>AeQ Cypher</h4>
+              <p matLine class="demo-2">Lukas</p>
+            </mat-list-item>
+            <mat-list-item mat-ripple>
+              <mat-icon matListIcon>folder</mat-icon>
+              <h4 matLine>AeQ Cypher</h4>
+              <p matLine class="demo-2">Lukas</p>
+            </mat-list-item>
+          </mat-list>
+        </mat-tab>
+        <mat-tab label="Archive"> Content 2</mat-tab>
+      </mat-tab-group>
+    </mat-card>
+
+  </td-layout-nav>
+</td-layout>

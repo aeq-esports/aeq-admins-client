@@ -1,0 +1,18 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'aeq-applications-list',
+  templateUrl: './applications-list.component.html',
+  styleUrls: ['./applications-list.component.css']
+})
+export class ApplicationsListComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  itemClicked() {
+    console.log('clicked');
+  }
+}

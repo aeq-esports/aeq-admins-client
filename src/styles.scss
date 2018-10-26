@@ -21,8 +21,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
   margin-right: 10px;
 }
 
-.td-navigation-drawer-content .mat-icon {
-  margin-right: 10px;
+.td-navigation-drawer-content,.td-layout-manage-list-sidenav .mat-icon {
+  margin-right: 16px;
 }
 
 [td-toolbar-content] {
@@ -52,4 +52,8 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 .mat-table-xs td.mat-cell:first-of-type {
   padding-left: 6px !important;
+}
+
+.mat-sidenav-list-badge {
+  padding-left: 12px;
 }

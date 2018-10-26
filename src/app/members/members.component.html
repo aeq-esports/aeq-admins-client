@@ -1,44 +1,34 @@
 <td-layout>
-  <td-layout-nav-list #navList layout-fill
-                      color="secondary"
-                      [opened]="media.registerQuery('gt-sm') | async"
-                      [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'over'"
-                      [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '350px' : '100%'">
-    <div td-sidenav-toolbar-content layout="row" layout-align="start center">
-      <!--<mat-icon [routerLink]="['/']" class="mat-icon-logo cursor-pointer" svgIcon=""></mat-icon>-->
-      <span [routerLink]="['/']" class="cursor-pointer">Covalent</span>
-    </div>
-    <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <button mat-icon-button tdLayoutNavListOpen [hideWhenOpened]="true">
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-      <span>Page Title</span>
-      <span flex></span>
-    </div>
-    <mat-nav-list td-sidenav-content [tdLayoutNavListClose]="!media.query('gt-sm')">
-      <mat-nav-list>
-        <a mat-list-item>
-          <mat-icon class="indent-list-icon">whatshot</mat-icon>
-          Dashboard</a>
-        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-        <a mat-list-item routerLink="list">
-          <mat-icon class="indent-list-icon">people</mat-icon>
-          Members</a>
-        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-      </mat-nav-list>
-
+  <td-layout-manage-list #manageList
+                         color="secondary"
+                         [opened]="media.registerQuery('gt-sm') | async"
+                         [mode]="(media.registerQuery('gt-sm') | async) ? 'side' :  'over'"
+                         [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '350px' : '100%'">
+    <mat-toolbar td-sidenav-content>
+      <span>Optional Title</span>
+    </mat-toolbar>
+    <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
+      <a mat-list-item>
+        <mat-icon class="indent-list-icon">whatshot</mat-icon>
+        Dashboard
+      </a>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      <a mat-list-item routerLink="list">
+        <mat-icon class="indent-list-icon">people</mat-icon>
+        All Members
+        <span class="mat-sidenav-list-badge" matBadge="4" matBadgeOverlap="false"></span>
+      </a>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      <a mat-list-item routerLink="applications">
+        <mat-icon class="indent-list-icon">create</mat-icon>
+        Applications
+      </a>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      <a mat-list-item routerLink="trials">
+        <mat-icon class="indent-list-icon">timer</mat-icon>
+        Trial Periods
+      </a>
     </mat-nav-list>
-    <div tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
-      <!-- Insert child components here -->
-      <router-outlet></router-outlet>
-    </div>
-    <td-layout-footer-inner>
-      Optional inner footer
-    </td-layout-footer-inner>
-    <td-layout-footer>
-      <div layout="row" layout-align="start center">
-        <span class="mat-caption">Copyright &copy; 2017 Teradata. All rights reserved</span>
-      </div>
-    </td-layout-footer>
-  </td-layout-nav-list>
+    <router-outlet></router-outlet>
+  </td-layout-manage-list>
 </td-layout>
