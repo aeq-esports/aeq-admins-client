@@ -1,10 +1,16 @@
 <td-layout>
   <td-layout-nav color="secondary">
-    <div td-toolbar-content>
+    <div td-toolbar-content fxLayout="row" fxLayoutGap="20px">
       <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
         <mat-icon>arrow_back</mat-icon>
       </button>
       <span>Members</span>
+
+      <button mat-stroked-button color="primary" fxFlex>
+        <mat-icon>add</mat-icon>
+        Create
+      </button>
+
       <span flex></span>
     </div>
 
