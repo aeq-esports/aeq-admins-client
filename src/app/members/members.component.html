@@ -3,27 +3,25 @@
                          color="secondary"
                          [opened]="media.registerQuery('gt-sm') | async"
                          [mode]="(media.registerQuery('gt-sm') | async) ? 'side' :  'over'"
-                         [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '350px' : '100%'">
+                         [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '300px' : '100%'">
     <mat-toolbar td-sidenav-content>
-      <span>Optional Title</span>
+      <span>Members</span>
     </mat-toolbar>
     <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
-      <a mat-list-item>
-        <mat-icon class="indent-list-icon">whatshot</mat-icon>
-        Dashboard
-      </a>
-      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-      <a mat-list-item routerLink="list">
-        <mat-icon class="indent-list-icon">people</mat-icon>
-        All Members
-        <span class="mat-sidenav-list-badge" matBadge="4" matBadgeOverlap="false"></span>
-      </a>
-      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-      <a mat-list-item routerLink="trials">
-        <mat-icon class="indent-list-icon">timer</mat-icon>
-        Trial Periods
-      </a>
+      <aeq-members-nav></aeq-members-nav>
     </mat-nav-list>
+    <mat-toolbar>
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
+        <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span>Overview</span>
+        <span fxFlex></span>
+        <button mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
     <router-outlet></router-outlet>
   </td-layout-manage-list>
 </td-layout>

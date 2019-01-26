@@ -16,16 +16,11 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes} from '@angular/router';
 import {MembersListComponent} from './members-list/members-list.component';
 import {CdkTableModule} from '@angular/cdk/table';
-import { ApplicationsListComponent } from './applications-list/applications-list.component';
+import { MembersNavComponent } from './members-nav.component';
 
 const membersRoutes: Routes = [
-  {
-    path: 'members', component: MembersComponent,
-    children: [
-      {path: 'list', component: MembersListComponent},
-      {path: 'applications', component: ApplicationsListComponent}
-    ]
-  }
+  {path: 'members', component: MembersComponent},
+  {path: 'members/list', component: MembersListComponent}
 ];
 
 @NgModule({
@@ -49,7 +44,7 @@ const membersRoutes: Routes = [
     MatBadgeModule,
     MatTabsModule
   ],
-  declarations: [MembersComponent, MembersListComponent, ApplicationsListComponent],
+  declarations: [MembersComponent, MembersListComponent, MembersNavComponent],
   exports: [MembersComponent]
 })
 export class MembersModule {

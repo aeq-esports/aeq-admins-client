@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MemberService} from '../../services/member.service';
 import {MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
+import {TdMediaService} from '@covalent/core';
 
 export interface MembersData {
   position: number;
@@ -16,6 +17,8 @@ export interface MembersData {
   styleUrls: ['./members-list.component.css']
 })
 export class MembersListComponent implements OnInit {
+
+  sidebarOpened: boolean;
 
   dataSource = new MatTableDataSource<MembersData>();
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -34,7 +37,8 @@ export class MembersListComponent implements OnInit {
     {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
   ];
 
-  constructor(private memberService: MemberService) {
+  constructor(private media: TdMediaService,
+              private memberService: MemberService) {
   }
 
   ngOnInit() {

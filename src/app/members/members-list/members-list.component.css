@@ -1,3 +1,9 @@
 table {
   width: 100%;
 }
+
+.fab-add-member {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+}

@@ -25,27 +25,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
   margin-right: 16px;
 }
 
-[td-toolbar-content] {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-[td-toolbar-content] span {
-  vertical-align: middle;
-}
-
-[td-sidenav-toolbar-content] {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-
-[td-sidenav-toolbar-content] span {
-  vertical-align: middle;
-}
-
 .mat-table-xs th.mat-header-cell:first-of-type {
   padding-left: 6px !important;
 }
