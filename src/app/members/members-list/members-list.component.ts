@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MemberService} from '../../services/member.service';
-import {MatTableDataSource} from '@angular/material';
+import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {TdMediaService} from '@covalent/core';
 
@@ -17,6 +17,8 @@ export interface MembersData {
   styleUrls: ['./members-list.component.css']
 })
 export class MembersListComponent implements OnInit {
+
+  @ViewChild(MatSort) sort: MatSort;
 
   sidebarOpened: boolean;
 
@@ -35,6 +37,16 @@ export class MembersListComponent implements OnInit {
     {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
     {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
     {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 11, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 12, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 13, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 14, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 15, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 16, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 17, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 18, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 19, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+    {position: 20, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
   ];
 
   constructor(private media: TdMediaService,
@@ -43,6 +55,7 @@ export class MembersListComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<MembersData>(this.data);
+    this.dataSource.sort = this.sort;
   }
 
   isAllSelected() {

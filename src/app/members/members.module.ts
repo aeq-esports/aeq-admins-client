@@ -9,7 +9,7 @@ import {
   MatCheckboxModule,
   MatIconModule,
   MatListModule,
-  MatRippleModule,
+  MatRippleModule, MatSortModule,
   MatTableModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -42,7 +42,8 @@ const membersRoutes: Routes = [
     MatRippleModule,
     MatToolbarModule,
     MatBadgeModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSortModule
   ],
   declarations: [MembersComponent, MembersListComponent, MembersNavComponent],
   exports: [MembersComponent]
