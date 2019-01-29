@@ -7,3 +7,11 @@ table {
   right: 24px;
   bottom: 24px;
 }
+
+.mat-toolbar {
+  z-index: 999;
+}
+
+.mat-column-edit {
+  width: 25px !important;
+}
