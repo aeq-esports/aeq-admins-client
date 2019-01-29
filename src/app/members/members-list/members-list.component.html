@@ -1,13 +1,13 @@
 <td-layout>
   <td-layout-manage-list #manageList
                          color="secondary"
-                         [opened]="media.registerQuery('gt-sm') | async"
-                         [mode]="(media.registerQuery('gt-sm') | async) ? 'side' :  'over'"
-                         [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '300px' : '100%'">
+                         [opened]="mediaService.registerQuery('gt-sm') | async"
+                         [mode]="(mediaService.registerQuery('gt-sm') | async) ? 'side' :  'over'"
+                         [sidenavWidth]="(mediaService.registerQuery('gt-xs') | async) ? '300px' : '100%'">
     <mat-toolbar td-sidenav-content>
       <span>Members</span>
     </mat-toolbar>
-    <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
+    <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!mediaService.query('gt-sm')">
       <aeq-members-nav></aeq-members-nav>
     </mat-nav-list>
     <mat-toolbar>
@@ -26,39 +26,30 @@
           <mat-icon>add</mat-icon>
         </button>
 
-        <table mat-table [dataSource]="dataSource" matSort tdMediaToggle="xs" [mediaClasses]="['mat-table-xs']">
+        <mat-table [dataSource]="dataSource" matSort tdMediaToggle="xs" [mediaClasses]="['mat-table-xs']">
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
-            <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="nickname">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
-            <td mat-cell *matCellDef="let element"> {{element.nickname}}</td>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nickname</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nickname}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight</th>
-            <td mat-cell *matCellDef="let element"> {{element.position}}</td>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Position</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.position}}</mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="games">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol</th>
-            <td mat-cell *matCellDef="let element"> {{element.games}}</td>
+          <ng-container matColumnDef="created">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Created At</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.created}}</mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef>Action</th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-icon-button color="secondary">
-                <mat-icon>edit</mat-icon>
-              </button>
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="displayMember(row)"></tr>
-        </table>
+          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple (click)="displayMember(row)"></mat-row>
+        </mat-table>
       </mat-card-content>
     </mat-card>
 

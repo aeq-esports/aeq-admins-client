@@ -1,14 +1,15 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, NgZone, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MemberService} from '../../services/member.service';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {TdMediaService} from '@covalent/core';
+import {Subscription} from 'rxjs';
 
 export interface MembersData {
   name: string;
   nickname: string;
   position: string;
-  games: string;
+  created: string;
 }
 
 @Component({
@@ -23,34 +24,55 @@ export class MembersListComponent implements OnInit {
 
   sidebarOpened: boolean;
 
-  dataSource = new MatTableDataSource<MembersData>();
-  displayedColumns: string[] = ['name', 'nickname', 'position', 'games', 'edit'];
-  selection = new SelectionModel<MembersData>(true, []);
+  private _mediaSubscription: Subscription;
 
+  dataSource = new MatTableDataSource<MembersData>();
+  displayedColumns: string[];
+
+  selection = new SelectionModel<MembersData>(true, []);
   data: MembersData[] = [
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'Staff', games: 'League of Legends'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Maintenance and Service', created: '23.01.2018'},
   ];
 
-  constructor(private media: TdMediaService,
-              private memberService: MemberService) {
+  constructor(public mediaService: TdMediaService,
+              private memberService: MemberService,
+              private _ngZone: NgZone) {
   }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<MembersData>(this.data);
     this.dataSource.sort = this.sort;
+
+    this._mediaSubscription = this.mediaService.registerQuery('xs').subscribe((matches: boolean) => {
+      this._ngZone.run(() => {
+        if (matches) {
+          this.displayedColumns = ['name', 'nickname'];
+        } else {
+          this.displayedColumns = ['name', 'nickname', 'position', 'created'];
+        }
+      });
+    });
   }
 
   isAllSelected() {
