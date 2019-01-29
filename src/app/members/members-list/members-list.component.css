@@ -6,6 +6,7 @@ table {
   position: fixed;
   right: 24px;
   bottom: 24px;
+  z-index: 999;
 }
 
 .mat-toolbar {
