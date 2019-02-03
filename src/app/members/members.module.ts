@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MembersComponent} from './members.component';
 import {CovalentLayoutModule, CovalentMediaModule, CovalentStepsModule} from '@covalent/core';
+import {CovalentSearchModule} from '@covalent/core/search';
 import {
   MatBadgeModule,
   MatButtonModule,
@@ -9,14 +10,18 @@ import {
   MatCheckboxModule,
   MatIconModule,
   MatListModule,
-  MatRippleModule, MatSortModule,
-  MatTableModule, MatTabsModule, MatToolbarModule
+  MatRippleModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatPaginatorModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes} from '@angular/router';
 import {MembersListComponent} from './members-list/members-list.component';
 import {CdkTableModule} from '@angular/cdk/table';
-import { MembersNavComponent } from './members-nav.component';
+import {MembersNavComponent} from './members-nav.component';
 
 const membersRoutes: Routes = [
   {path: 'members', component: MembersComponent},
@@ -31,6 +36,7 @@ const membersRoutes: Routes = [
     CovalentLayoutModule,
     CovalentStepsModule,
     CovalentMediaModule,
+    CovalentSearchModule,
     MatIconModule,
     MatListModule,
     MatButtonModule,
@@ -43,7 +49,8 @@ const membersRoutes: Routes = [
     MatToolbarModule,
     MatBadgeModule,
     MatTabsModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ],
   declarations: [MembersComponent, MembersListComponent, MembersNavComponent],
   exports: [MembersComponent]

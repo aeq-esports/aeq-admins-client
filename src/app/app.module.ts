@@ -27,7 +27,9 @@ const appRoutes: Routes = [
     LoginModule,
     HomeModule
   ],
-  providers: [MemberService],
+  providers: [
+    MemberService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

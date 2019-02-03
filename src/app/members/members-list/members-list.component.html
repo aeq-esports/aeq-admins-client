@@ -17,6 +17,13 @@
         </button>
         <span>Members</span>
         <span fxFlex></span>
+
+        <td-search-box #searchInput placeholder="Search"
+                       [showUnderline]="false" [debounce]="500" [alwaysVisible]="false"
+                       (searchDebounce)="onSearchDebounce($event)"
+                       (clear)="searchInput.value = ''">
+        </td-search-box>
+
       </div>
     </mat-toolbar>
 
@@ -50,6 +57,7 @@
           <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple (click)="displayMember(row)"></mat-row>
         </mat-table>
+
       </mat-card-content>
     </mat-card>
 

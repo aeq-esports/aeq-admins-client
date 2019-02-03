@@ -1,8 +1,8 @@
 import {Component, NgZone, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MemberService} from '../../services/member.service';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
-import {TdMediaService} from '@covalent/core';
+import {TdMediaService, TdSearchBoxComponent} from '@covalent/core';
 import {Subscription} from 'rxjs';
 
 export interface MembersData {
@@ -21,8 +21,10 @@ export interface MembersData {
 export class MembersListComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(TdSearchBoxComponent) searchBar: TdSearchBoxComponent;
 
-  sidebarOpened: boolean;
+  pagingConfig: number[];
 
   private _mediaSubscription: Subscription;
 
@@ -63,6 +65,7 @@ export class MembersListComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource<MembersData>(this.data);
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
 
     this._mediaSubscription = this.mediaService.registerQuery('xs').subscribe((matches: boolean) => {
       this._ngZone.run(() => {
@@ -89,5 +92,9 @@ export class MembersListComponent implements OnInit {
 
   displayMember($row) {
     console.log($row);
+  }
+
+  onSearchDebounce($event: string) {
+    this.dataSource.filter = $event.trim().toLowerCase();
   }
 }

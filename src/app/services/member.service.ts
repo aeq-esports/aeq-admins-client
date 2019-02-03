@@ -4,7 +4,8 @@ import 'rxjs-compat/add/observable/of';
 import {HttpClient} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 
-interface User {
+interface Member {
+  id: number;
   username: String;
 }
 
@@ -18,14 +19,22 @@ export class MemberService {
   constructor(private http: HttpClient) {
   }
 
-  getMembers(): Observable<User[]> {
-    return this.http.get<User[]>(this.API_URL_USERS)
+  getMembers(): Observable<Member[]> {
+    return this.http.get<Member[]>(this.API_URL_USERS)
       .pipe(
         catchError(this.handleError('getHeroes', []))
       );
   }
 
-  getMemberById(id: number): Observable<User> {
+  getMemberById(id: number): Observable<Member> {
+    return Observable.of();
+  }
+
+  updateMember() {
+
+  }
+
+  deleteMemberById(id: number): Observable<void> {
     return Observable.of();
   }
 
