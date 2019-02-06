@@ -4,6 +4,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {TdMediaService, TdSearchBoxComponent} from '@covalent/core';
 import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 export interface MembersData {
   name: string;
@@ -59,7 +60,8 @@ export class MembersListComponent implements OnInit {
 
   constructor(public mediaService: TdMediaService,
               private memberService: MemberService,
-              private _ngZone: NgZone) {
+              private _ngZone: NgZone,
+              private _router: Router) {
   }
 
   ngOnInit() {
@@ -96,5 +98,9 @@ export class MembersListComponent implements OnInit {
 
   onSearchDebounce($event: string) {
     this.dataSource.filter = $event.trim().toLowerCase();
+  }
+
+  onBtnAddMemberClick() {
+    this._router.navigate(['home/members/create']);
   }
 }

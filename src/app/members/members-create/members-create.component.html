@@ -1,0 +1,106 @@
+<td-layout-card-over cardTitle="Create new member" cardSubtitle="">
+
+  <mat-vertical-stepper [linear]="false" #stepper>
+    <mat-step [stepControl]="personalDataForm">
+      <form [formGroup]="personalDataForm">
+        <ng-template matStepLabel>Personal information</ng-template>
+
+        <div fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="flex-start">
+          <mat-form-field>
+            <input matInput placeholder="First name" formControlName="firstName">
+          </mat-form-field>
+          <mat-form-field id="mat-form-field-age">
+            <input matInput type="number" placeholder="Age" formControlName="age">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select matInput placeholder="Gender" formControlName="gender">
+              <mat-select-trigger>
+                {{personalDataForm.get('gender').value}}
+              </mat-select-trigger>
+              <mat-option *ngFor="let gender of genderValues" [value]="gender">
+                <!--
+                TODO: Material design gender icons not yet available
+                <mat-icon></mat-icon>
+                -->
+                <span>{{gender}}</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="forumForm">
+      <p>
+        Please ask the user to create an account on our website. Afterwards, enter the related user id.
+      </p>
+      <form [formGroup]="forumForm">
+        <ng-template matStepLabel>Forum account verification</ng-template>
+
+        <mat-form-field>
+          <input matInput type="number" placeholder="Forum Id" formControlName="forumId">
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="teamspeakForm">
+      <p>
+        Verify the users teamspeak account by selecting the matching nickname from the following list.
+      </p>
+      <div class="chip-list-nickname-suggest" *ngIf="!teamspeakForm.get('nickname').value">
+        <p>What about?</p>
+        <mat-chip-list>
+          <mat-chip *ngFor="let nickname of ts3SuggestedNicknames" (click)="setSuggestedNickname(nickname)">
+            {{nickname}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+
+      <form [formGroup]="teamspeakForm">
+        <ng-template matStepLabel>Teamspeak account verification</ng-template>
+
+        <mat-form-field>
+          <input type="text" placeholder="Search Nickname" matInput formControlName="nickname" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let nickname of ts3Nicknames" [value]="nickname">
+              {{nickname}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="flex-start">
+        <p>
+          Please decide whether the trial period should be started immediately or delayed up to a cap.
+        </p>
+        <mat-checkbox #startTrialPeriod color="primary" [checked]="true">
+          Start trial period
+        </mat-checkbox>
+        <mat-form-field *ngIf="!startTrialPeriod.checked" fxFlex="none">
+          <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="mat-stepper-action-bar">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+
+</td-layout-card-over>
