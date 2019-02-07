@@ -87,10 +87,13 @@
         <p>
           Please decide whether the trial period should be started immediately or delayed up to a cap.
         </p>
-        <mat-checkbox #startTrialPeriod color="primary" [checked]="true">
-          Start trial period
-        </mat-checkbox>
-        <mat-form-field *ngIf="!startTrialPeriod.checked" fxFlex="none">
+        <mat-radio-group fxLayout="column" fxLayoutGap="16px" [(ngModel)]="selectedTrialOption">
+          <mat-radio-button *ngFor="let option of trialPeriodOptions" [value]="option" color="primary"
+                            [checked]="option === trialPeriodOptions[0]">
+            {{option}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field *ngIf="selectedTrialOption === trialPeriodOptions[1]" fxFlex="none">
           <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" placeholder="Choose a date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>

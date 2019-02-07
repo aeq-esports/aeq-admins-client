@@ -12,7 +12,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule, MatNativeDateModule,
-  MatPaginatorModule,
+  MatPaginatorModule, MatRadioModule,
   MatRippleModule,
   MatSelectModule,
   MatSortModule,
@@ -66,7 +66,8 @@ const membersRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    MatChipsModule
+    MatChipsModule,
+    MatRadioModule
   ],
   declarations: [MembersComponent, MembersListComponent, MembersNavComponent, MembersCreateComponent],
   exports: [MembersComponent]

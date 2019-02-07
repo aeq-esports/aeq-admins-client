@@ -25,6 +25,8 @@ export class MembersCreateComponent implements OnInit {
   }
   minDate: Date;
   maxDate: Date;
+  trialPeriodOptions: string[] = ['Start upon submit', 'Custom'];
+  selectedTrialOption: string;
 
   constructor(private _formBuilder: FormBuilder) {
   }

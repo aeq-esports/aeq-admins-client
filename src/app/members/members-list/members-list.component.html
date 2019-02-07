@@ -19,7 +19,7 @@
         <span fxFlex></span>
 
         <td-search-box #searchInput placeholder="Search"
-                       [showUnderline]="false" [debounce]="500" [alwaysVisible]="false"
+                       [showUnderline]="true" [debounce]="500" [alwaysVisible]="false"
                        (searchDebounce)="onSearchDebounce($event)"
                        (clear)="searchInput.value = ''">
         </td-search-box>
@@ -46,7 +46,8 @@
 
           <ng-container matColumnDef="position">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Position</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.position}}</mat-cell>
+            <mat-cell *matCellDef="let element">
+              {{element.position}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="created">
