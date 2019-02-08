@@ -1,9 +1,8 @@
-import {TrialPeriodState} from './trial-period';
-
 export interface Member {
   name: string;
   nickname: string;
-  trialPeriodState: TrialPeriodState;
+  gender: string;
   position: string;
+  lastSeen: string;
   created: string;
 }

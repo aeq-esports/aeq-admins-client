@@ -8,18 +8,22 @@ import {
   MatBadgeModule,
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule, MatChipsModule, MatDatepickerModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatNativeDateModule,
-  MatPaginatorModule, MatRadioModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatRadioModule,
   MatRippleModule,
   MatSelectModule,
   MatSortModule,
   MatStepperModule,
   MatTableModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes} from '@angular/router';

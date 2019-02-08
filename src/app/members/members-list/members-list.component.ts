@@ -27,22 +27,36 @@ export class MembersListComponent implements OnInit {
 
   selection = new SelectionModel<Member>(true, []);
   data: Member[] = [
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.OPEN, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.PENDING, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.APPROVED, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.REJECTED, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.OPEN, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.PENDING, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.APPROVED, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.REJECTED, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.OPEN, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.PENDING, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.APPROVED, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.REJECTED, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.OPEN, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.PENDING, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.APPROVED, created: '23.01.2018'},
-    {name: 'Lukas', nickname: 'Cypher', position: 'M&S', trialPeriodState: TrialPeriodState.REJECTED, created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'},
+    {name: 'Lukas', nickname: 'Cypher', position: 'Member', gender: 'Male', lastSeen: 'Today', created: '23.01.2018'}
   ];
 
   constructor(public mediaService: TdMediaService,
@@ -59,9 +73,9 @@ export class MembersListComponent implements OnInit {
     this._mediaSubscription = this.mediaService.registerQuery('xs').subscribe((matches: boolean) => {
       this._ngZone.run(() => {
         if (matches) {
-          this.displayedColumns = ['name', 'nickname', 'trialPeriodState'];
+          this.displayedColumns = ['name', 'nickname', 'position'];
         } else {
-          this.displayedColumns = ['name', 'nickname', 'position', 'trialPeriodState', 'created'];
+          this.displayedColumns = ['name', 'nickname', 'position', 'gender', 'lastSeen', 'created'];
         }
       });
     });
