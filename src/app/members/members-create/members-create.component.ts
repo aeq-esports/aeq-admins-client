@@ -28,6 +28,8 @@ export class MembersCreateComponent implements OnInit {
   trialPeriodOptions: string[] = ['Start upon submit', 'Custom'];
   selectedTrialOption: string;
 
+  trialPeriodForm: FormGroup;
+
   constructor(private _formBuilder: FormBuilder) {
   }
 
@@ -45,6 +47,11 @@ export class MembersCreateComponent implements OnInit {
     this.teamspeakForm = this._formBuilder.group({
       nickname: ['', Validators.required]
     });
+
+    this.trialPeriodForm = this._formBuilder.group({
+      selectedOption: ['', Validators.required],
+      startDate: ['']
+    });
   }
 
   private setDatepickerBounds(datepicker: MatDatepicker<Date>) {
@@ -59,5 +66,12 @@ export class MembersCreateComponent implements OnInit {
 
   setSuggestedNickname(nickname: string) {
     this.teamspeakForm.controls['nickname'].setValue(nickname);
+  }
+
+  submit() {
+    console.log(this.personalDataForm.value);
+    console.log(this.teamspeakForm.value);
+    console.log(this.forumForm.value);
+    console.log(this.trialPeriodForm.value);
   }
 }

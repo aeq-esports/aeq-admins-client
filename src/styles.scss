@@ -2,14 +2,13 @@
 @import '~@covalent/core/theming/all-theme';
 
 $typography: mat-typography-config(
-  $font-family: 'Roboto, monospace' // $headline: mat-typography-level(32px, 48px, 700)
+
 );
 
 @include mat-core($typography);
 
-$primary: mat-palette($mat-orange, 800, 100, 900);
-$accent: mat-palette($mat-light-blue, 600, 100, 900);
-
+$primary: mat-palette($mat-green, 800, 100, 900);
+$accent: mat-palette($mat-gray, 600, 100, 900);
 $warn: mat-palette($mat-red, 600, 100, 900);
 
 $theme: mat-light-theme($primary, $accent, $warn);
@@ -35,6 +34,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 .mat-sidenav-list-badge {
   padding-left: 12px;
+}
+
+.mat-list-item-content .mat-icon {
+  margin-right: 16px;
 }
 
 .mat-stepper-action-bar {

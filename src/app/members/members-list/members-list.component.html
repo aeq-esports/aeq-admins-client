@@ -46,8 +46,14 @@
 
           <ng-container matColumnDef="position">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Position</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.position}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="trialPeriodState">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Trial Period</mat-header-cell>
             <mat-cell *matCellDef="let element">
-              {{element.position}}</mat-cell>
+              <mat-icon>{{getIconForTrialPeriodState(element.trialPeriodState)}}</mat-icon>
+            </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="created">
