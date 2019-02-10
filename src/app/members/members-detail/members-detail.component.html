@@ -1,0 +1,71 @@
+<td-layout-card-over cardWidth="75">
+  <mat-card-title>Lukas "Cypher"</mat-card-title>
+  <mat-card-subtitle>Detailed information about this community member.</mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="Profile" >
+
+        <mat-list>
+          <h3 matSubheader>Metadata</h3>
+          <ng-template let-item let-last="last" ngFor [ngForOf]="cardlist">
+            <mat-list-item>
+              <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+              <h3 matLine> {{item.title}} </h3>
+              <p matLine> {{item.description}} </p>
+            </mat-list-item>
+            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+          </ng-template>
+          <mat-divider></mat-divider>
+          <h3 matSubheader>Activity</h3>
+
+          <p>The following chart represents the members teamspeak activity.</p>
+
+          <div fxLayout="row">
+            <td-chart [style.height.px]="300" fxFlex="95">
+              <td-chart-tooltip [trigger]="'item'"
+                                [textStyle]="{ color: '#818181' }"
+                                [backgroundColor]="'#ffffff'">
+                <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
+                  <ng-container *ngIf="params">
+                    <div layout="row" layout-align="start center">
+                      <mat-icon>
+                        <span [style.color]="params.color">people</span>
+                      </mat-icon>
+                      <span class="mat-caption pad-left-sm">
+            {{params.seriesName + ': ' + params.value}}
+          </span>
+                    </div>
+                  </ng-container>
+                </ng-template>
+              </td-chart-tooltip>
+              <td-chart-x-axis [show]="true"
+                               [position]="'bottom'"
+                               [type]="'category'"
+                               [data]="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']"
+                               [boundaryGap]="true">
+              </td-chart-x-axis>
+              <td-chart-y-axis [show]="true"
+                               [type]="'value'"
+                               [position]="'left'"
+                               [max]="300"
+                               [splitLine]="{ lineStyle: { type: 'dotted' }}">
+              </td-chart-y-axis>
+              <td-chart-series td-bar
+                               [data]="[80, 122, 80, 120, 80, 120, 0, 20, 80, 200, 10, 40, 60, 300]"
+                               [name]="'Yesterday'"
+                               [markLine]="{ data: [{ name: 'Average', value: 30, xAxis: 1, yAxis: 30 }] }"
+                               [color]="'#3A4950'">
+              </td-chart-series>
+            </td-chart>
+          </div>
+
+        </mat-list>
+      </mat-tab>
+
+      <mat-tab label="Trial Periods">Content 2</mat-tab>
+
+      <mat-tab label="Complaints">Content 3</mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</td-layout-card-over>

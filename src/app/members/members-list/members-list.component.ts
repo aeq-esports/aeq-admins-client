@@ -94,7 +94,7 @@ export class MembersListComponent implements OnInit {
   }
 
   displayMember($row) {
-    console.log($row);
+    this._router.navigate(['home/members/', 1]);
   }
 
   onSearchDebounce($event: string) {

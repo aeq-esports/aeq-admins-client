@@ -32,11 +32,19 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MembersNavComponent} from './members-nav.component';
 import {MembersCreateComponent} from './members-create/members-create.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MembersDetailComponent} from './members-detail/members-detail.component';
+
+import {CovalentBaseEchartsModule} from '@covalent/echarts/base';
+import {CovalentBarEchartsModule} from '@covalent/echarts/bar';
+import {CovalentLineEchartsModule} from '@covalent/echarts/line';
+import {CovalentTooltipEchartsModule} from '@covalent/echarts/tooltip';
+import {CovalentToolboxEchartsModule} from '@covalent/echarts/toolbox';
 
 const membersRoutes: Routes = [
   {path: 'members', component: MembersComponent},
   {path: 'members/create', component: MembersCreateComponent},
-  {path: 'members/list', component: MembersListComponent}
+  {path: 'members/list', component: MembersListComponent},
+  {path: 'members/:id', component: MembersDetailComponent}
 ];
 
 @NgModule({
@@ -71,9 +79,14 @@ const membersRoutes: Routes = [
     MatNativeDateModule,
     MatAutocompleteModule,
     MatChipsModule,
-    MatRadioModule
+    MatRadioModule,
+    CovalentBaseEchartsModule,
+    CovalentBarEchartsModule,
+    CovalentToolboxEchartsModule,
+    CovalentLineEchartsModule,
+    CovalentTooltipEchartsModule
   ],
-  declarations: [MembersComponent, MembersListComponent, MembersNavComponent, MembersCreateComponent],
+  declarations: [MembersComponent, MembersListComponent, MembersNavComponent, MembersCreateComponent, MembersDetailComponent],
   exports: [MembersComponent]
 })
 export class MembersModule {

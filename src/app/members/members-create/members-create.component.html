@@ -1,117 +1,151 @@
-<td-layout-card-over cardTitle="Create Member"
-                     cardSubtitle="Please fill out the following form to create a new member.">
+<td-layout>
+  <td-layout-manage-list #manageList
+                         color="secondary"
+                         [opened]="mediaService.registerQuery('gt-sm') | async"
+                         [mode]="(mediaService.registerQuery('gt-sm') | async) ? 'side' :  'over'"
+                         [sidenavWidth]="(mediaService.registerQuery('gt-xs') | async) ? '300px' : '100%'">
+    <mat-toolbar td-sidenav-content>
+      <span>Members</span>
+    </mat-toolbar>
+    <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!mediaService.query('gt-sm')">
+      <aeq-members-nav></aeq-members-nav>
+    </mat-nav-list>
+    <mat-toolbar>
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
+        <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span>Create Member</span>
+        <span fxFlex></span>
 
-  <mat-vertical-stepper [linear]="false" #stepper>
-    <mat-step [stepControl]="personalDataForm">
-      <form [formGroup]="personalDataForm">
-        <ng-template matStepLabel>Personal information</ng-template>
+        <td-search-box #searchInput placeholder="Search"
+                       [showUnderline]="true" [debounce]="500" [alwaysVisible]="false"
+                       (searchDebounce)="onSearchDebounce($event)"
+                       (clear)="searchInput.value = ''">
+        </td-search-box>
 
-        <div fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="flex-start">
-          <mat-form-field>
-            <input matInput placeholder="First name" formControlName="firstName">
-          </mat-form-field>
-          <mat-form-field id="mat-form-field-age">
-            <input matInput type="number" placeholder="Age" formControlName="age">
-          </mat-form-field>
-          <mat-form-field>
-            <mat-select matInput placeholder="Gender" formControlName="gender">
-              <mat-select-trigger>
-                {{personalDataForm.get('gender').value}}
-              </mat-select-trigger>
-              <mat-option *ngFor="let gender of genderValues" [value]="gender">
-                <!--
-                TODO: Material design gender icons not yet available
-                <mat-icon></mat-icon>
-                -->
-                <span>{{gender}}</span>
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="forumForm">
-      <p>
-        Please ask the user to create an account on our website. Afterwards, enter the related user id.
-      </p>
-      <form [formGroup]="forumForm">
-        <ng-template matStepLabel>Forum account verification</ng-template>
-
-        <mat-form-field>
-          <input matInput type="number" placeholder="Forum Id" formControlName="forumId">
-        </mat-form-field>
-
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="teamspeakForm">
-      <p>
-        Verify the users teamspeak account by selecting the matching nickname from the following list.
-      </p>
-      <div class="chip-list-nickname-suggest" *ngIf="!teamspeakForm.get('nickname').value">
-        <p>What about?</p>
-        <mat-chip-list>
-          <mat-chip *ngFor="let nickname of ts3SuggestedNicknames" (click)="setSuggestedNickname(nickname)">
-            {{nickname}}
-          </mat-chip>
-        </mat-chip-list>
       </div>
+    </mat-toolbar>
 
-      <form [formGroup]="teamspeakForm">
-        <ng-template matStepLabel>Teamspeak account verification</ng-template>
+    <mat-card>
+      <mat-card-content>
+        <mat-vertical-stepper [linear]="false" #stepper>
+          <mat-step [stepControl]="personalDataForm">
+            <form [formGroup]="personalDataForm">
+              <ng-template matStepLabel>Personal information</ng-template>
 
-        <mat-form-field>
-          <input type="text" placeholder="Search Nickname" matInput formControlName="nickname" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let nickname of ts3Nicknames" [value]="nickname">
-              {{nickname}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+              <div fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="flex-start">
+                <mat-form-field>
+                  <input matInput placeholder="First name" formControlName="firstName">
+                </mat-form-field>
+                <mat-form-field id="mat-form-field-age">
+                  <input matInput type="number" placeholder="Age" formControlName="age">
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-select matInput placeholder="Gender" formControlName="gender">
+                    <mat-select-trigger>
+                      {{personalDataForm.get('gender').value}}
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let gender of genderValues" [value]="gender">
+                      <!--
+                      TODO: Material design gender icons not yet available
+                      <mat-icon></mat-icon>
+                      -->
+                      <span>{{gender}}</span>
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
 
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <form [formGroup]="trialPeriodForm">
-        <ng-template matStepLabel>Trial Period</ng-template>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="forumForm">
+            <p>
+              Please ask the user to create an account on our website. Afterwards, enter the related user id.
+            </p>
+            <form [formGroup]="forumForm">
+              <ng-template matStepLabel>Forum account verification</ng-template>
 
-        <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="flex-start">
-          <p>
-            Please decide whether the trial period should be started immediately or delayed up to a cap.
-          </p>
-          <mat-radio-group fxLayout="column" fxLayoutGap="16px" formControlName="selectedOption">
-            <mat-radio-button *ngFor="let option of trialPeriodOptions" [value]="option" color="primary"
-                              [checked]="option === trialPeriodOptions[0]">
-              {{option}}
-            </mat-radio-button>
-          </mat-radio-group>
+              <mat-form-field>
+                <input matInput type="number" placeholder="Forum Id" formControlName="forumId">
+              </mat-form-field>
 
-          <mat-form-field *ngIf="trialPeriodForm.get('selectedOption').value === trialPeriodOptions[1]" fxFlex="none">
-            <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" placeholder="Choose a date"
-                   formControlName="startDate">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="teamspeakForm">
+            <p>
+              Verify the users teamspeak account by selecting the matching nickname from the following list.
+            </p>
+            <div class="chip-list-nickname-suggest" *ngIf="!teamspeakForm.get('nickname').value">
+              <p>What about?</p>
+              <mat-chip-list>
+                <mat-chip *ngFor="let nickname of ts3SuggestedNicknames" (click)="setSuggestedNickname(nickname)">
+                  {{nickname}}
+                </mat-chip>
+              </mat-chip-list>
+            </div>
 
-        <div class="mat-stepper-action-bar">
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
-          <button mat-button color="primary" (click)="submit()">Create</button>
-        </div>
-      </form>
-    </mat-step>
-  </mat-vertical-stepper>
+            <form [formGroup]="teamspeakForm">
+              <ng-template matStepLabel>Teamspeak account verification</ng-template>
 
-</td-layout-card-over>
+              <mat-form-field>
+                <input type="text" placeholder="Search Nickname" matInput formControlName="nickname"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let nickname of ts3Nicknames" [value]="nickname">
+                    {{nickname}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <form [formGroup]="trialPeriodForm">
+              <ng-template matStepLabel>Trial Period</ng-template>
+
+              <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="flex-start">
+                <p>
+                  Please decide whether the trial period should be started immediately or delayed up to a cap.
+                </p>
+                <mat-radio-group fxLayout="column" fxLayoutGap="16px" formControlName="selectedOption">
+                  <mat-radio-button *ngFor="let option of trialPeriodOptions" [value]="option" color="primary"
+                                    [checked]="option === trialPeriodOptions[0]">
+                    {{option}}
+                  </mat-radio-button>
+                </mat-radio-group>
+
+                <mat-form-field *ngIf="trialPeriodForm.get('selectedOption').value === trialPeriodOptions[1]"
+                                fxFlex="none">
+                  <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" placeholder="Choose a date"
+                         formControlName="startDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <div class="mat-stepper-action-bar">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
+                <button mat-button color="primary" (click)="submit()">Create</button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-vertical-stepper>
+
+      </mat-card-content>
+    </mat-card>
+
+  </td-layout-manage-list>
+</td-layout>

@@ -15,7 +15,7 @@
         <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
           <mat-icon>arrow_back</mat-icon>
         </button>
-        <span>Members</span>
+        <span>Database</span>
         <span fxFlex></span>
 
         <td-search-box #searchInput placeholder="Search"
@@ -29,10 +29,6 @@
 
     <mat-card>
       <mat-card-content>
-        <button class="fab-add-member" mat-fab color="primary" (click)="onBtnAddMemberClick()">
-          <mat-icon>add</mat-icon>
-        </button>
-
         <mat-table [dataSource]="dataSource" matSort tdMediaToggle="xs" [mediaClasses]="['mat-table-xs']">
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>

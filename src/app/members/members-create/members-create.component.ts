@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDatepicker} from '@angular/material';
+import {TdMediaService} from '@covalent/core';
 
 @Component({
   selector: 'aeq-members-create',
@@ -23,14 +24,15 @@ export class MembersCreateComponent implements OnInit {
       this.setDatepickerBounds(datepicker);
     }
   }
+
   minDate: Date;
   maxDate: Date;
   trialPeriodOptions: string[] = ['Start upon submit', 'Custom'];
-  selectedTrialOption: string;
 
   trialPeriodForm: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(public mediaService: TdMediaService,
+              private _formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
